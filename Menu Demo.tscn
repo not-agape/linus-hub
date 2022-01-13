@@ -1,0 +1,278 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Control_Settings.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Control_Menu.gd" type="Script" id=2]
+[ext_resource path="res://Shaders/blur.shader" type="Shader" id=3]
+[ext_resource path="res://Fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Fonts/bebas_neue36.tres" type="Theme" id=5]
+[ext_resource path="res://Images/sinus-lebastian.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/bebas_neue42.tres" type="DynamicFont" id=7]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/amount = 3.0
+
+[sub_resource type="NoiseTexture" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+font_data = ExtResource( 4 )
+
+[node name="Control_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 640.093, 360.375 )
+scale = Vector2( 1.99971, 2.29792 )
+texture = ExtResource( 6 )
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+anchor_left = 0.032
+anchor_top = 0.5
+anchor_right = 0.407
+anchor_bottom = 0.944
+margin_left = 175.04
+margin_top = -65.0
+margin_right = 33.04
+margin_bottom = -152.4
+rect_rotation = -2.64261
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Start" type="Button" parent="Vertical"]
+margin_top = 26.0
+margin_right = 338.0
+margin_bottom = 83.0
+custom_colors/font_color_focus = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color_hover = Color( 0.34902, 0.105882, 0.321569, 1 )
+custom_colors/font_color_pressed = Color( 0.270588, 0.027451, 0.243137, 1 )
+text = "Iniciar"
+flat = true
+
+[node name="Button_Settings" type="Button" parent="Vertical"]
+margin_top = 87.0
+margin_right = 338.0
+margin_bottom = 144.0
+custom_colors/font_color_focus = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color_hover = Color( 0.34902, 0.105882, 0.321569, 1 )
+custom_colors/font_color_pressed = Color( 0.270588, 0.027451, 0.243137, 1 )
+text = "Configurações"
+flat = true
+
+[node name="Button_Exit" type="Button" parent="Vertical"]
+margin_top = 148.0
+margin_right = 338.0
+margin_bottom = 205.0
+custom_colors/font_color_focus = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color_hover = Color( 0.34902, 0.105882, 0.321569, 1 )
+custom_colors/font_color_pressed = Color( 0.270588, 0.027451, 0.243137, 1 )
+text = "Sair"
+flat = true
+
+[node name="Control_Settings" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+
+[node name="Blur Mask" type="TextureRect" parent="Control_Settings"]
+material = SubResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Horizontal" type="HBoxContainer" parent="Control_Settings/Blur Mask"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -395.0
+margin_top = -111.0
+margin_right = 395.0
+margin_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 79, 37 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V1" type="VBoxContainer" parent="Control_Settings/Blur Mask/Horizontal"]
+margin_right = 355.0
+margin_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
+
+[node name="Vídeo" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V1"]
+margin_right = 355.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+text = "Vídeo"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control_Settings/Blur Mask/Horizontal/V1"]
+margin_top = 48.0
+margin_right = 355.0
+margin_bottom = 48.0
+
+[node name="Resolution" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V1"]
+margin_top = 52.0
+margin_right = 355.0
+margin_bottom = 96.0
+text = "Resolução"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton_Res" type="OptionButton" parent="Control_Settings/Blur Mask/Horizontal/V1/Resolution"]
+margin_left = 165.0
+margin_right = 379.0
+margin_bottom = 45.0
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "1280x720"
+items = [ "1280x720", null, false, 0, null, "1920x1080", null, false, 1, null, "2560x1440", null, false, 2, null, "3840x2160", null, false, 3, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V1"]
+margin_top = 100.0
+margin_right = 355.0
+margin_bottom = 144.0
+text = "Tela Cheia"
+
+[node name="CheckBox_Fullscreen" type="CheckBox" parent="Control_Settings/Blur Mask/Horizontal/V1/Fullscreen"]
+margin_left = 159.0
+margin_right = 183.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control_Settings/Blur Mask/Horizontal"]
+margin_left = 359.0
+margin_right = 430.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V2" type="VBoxContainer" parent="Control_Settings/Blur Mask/Horizontal"]
+margin_left = 434.0
+margin_right = 790.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
+
+[node name="Áudio" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V2"]
+margin_right = 356.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+text = "Áudio"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control_Settings/Blur Mask/Horizontal/V2"]
+margin_top = 48.0
+margin_right = 356.0
+margin_bottom = 48.0
+
+[node name="Volume_Music" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V2"]
+margin_top = 52.0
+margin_right = 356.0
+margin_bottom = 96.0
+text = "Música"
+
+[node name="HS_Music" type="HSlider" parent="Control_Settings/Blur Mask/Horizontal/V2/Volume_Music"]
+margin_left = 98.0
+margin_top = 12.0
+margin_right = 356.0
+margin_bottom = 28.0
+max_value = 10.0
+value = 7.0
+rounded = true
+tick_count = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume_SFX" type="Label" parent="Control_Settings/Blur Mask/Horizontal/V2"]
+margin_top = 100.0
+margin_right = 356.0
+margin_bottom = 144.0
+text = "Efeitos"
+
+[node name="HS_SFX" type="HSlider" parent="Control_Settings/Blur Mask/Horizontal/V2/Volume_SFX"]
+margin_left = 98.0
+margin_top = 12.0
+margin_right = 356.0
+margin_bottom = 28.0
+max_value = 10.0
+value = 7.0
+rounded = true
+tick_count = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Save" type="Button" parent="Control_Settings/Blur Mask"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -156.0
+margin_top = -126.0
+margin_right = 156.0
+margin_bottom = -69.0
+custom_colors/font_color_focus = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/font_color_hover = Color( 0.34902, 0.105882, 0.321569, 1 )
+custom_colors/font_color_pressed = Color( 0.270588, 0.027451, 0.243137, 1 )
+text = "Salvar e Aplicar"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Vertical/Button_Start" to="." method="_on_Button_Start_pressed"]
+[connection signal="pressed" from="Vertical/Button_Settings" to="." method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Vertical/Button_Exit" to="." method="_on_Button_Exit_pressed"]
+[connection signal="item_selected" from="Control_Settings/Blur Mask/Horizontal/V1/Resolution/OptionButton_Res" to="Control_Settings" method="_on_OptionButton_Res_item_selected"]
+[connection signal="toggled" from="Control_Settings/Blur Mask/Horizontal/V1/Fullscreen/CheckBox_Fullscreen" to="Control_Settings" method="_on_CheckBox_Fullscreen_toggled"]
+[connection signal="value_changed" from="Control_Settings/Blur Mask/Horizontal/V2/Volume_Music/HS_Music" to="Control_Settings" method="_on_HS_Music_value_changed"]
+[connection signal="value_changed" from="Control_Settings/Blur Mask/Horizontal/V2/Volume_SFX/HS_SFX" to="Control_Settings" method="_on_HS_SFX_value_changed"]
+[connection signal="pressed" from="Control_Settings/Blur Mask/Button_Save" to="Control_Settings" method="_on_Button_Save_pressed"]
